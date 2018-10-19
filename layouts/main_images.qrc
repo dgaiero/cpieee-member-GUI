@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="loginHeader">
+    <file>logo_license_back_small.png</file>
     <file>header_background_logo.gif</file>
   </qresource>
 </RCC>

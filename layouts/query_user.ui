@@ -138,7 +138,7 @@ any parameter</string>
       <string>Export</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -220,7 +220,14 @@ any parameter</string>
     <addaction name="actionLogout"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="viewHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuOptions"/>
+   <addaction name="viewHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionLogout">
@@ -231,6 +238,11 @@ any parameter</string>
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>
