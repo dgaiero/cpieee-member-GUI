@@ -22,11 +22,6 @@
     <height>167</height>
    </size>
   </property>
-  <property name="font">
-   <font>
-    <family>Fira Code Medium</family>
-   </font>
-  </property>
   <property name="windowTitle">
    <string>User Lookup Result</string>
   </property>
@@ -47,10 +42,7 @@
      <widget class="QLabel" name="label">
       <property name="font">
        <font>
-        <family>Fira Code</family>
-        <pointsize>48</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>42</pointsize>
        </font>
       </property>
       <property name="autoFillBackground">
@@ -75,7 +67,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>

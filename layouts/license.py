@@ -20,13 +20,10 @@ class Ui_Dialog(object):
         Dialog.setSizePolicy(sizePolicy)
         Dialog.setMinimumSize(QtCore.QSize(702, 505))
         Dialog.setMaximumSize(QtCore.QSize(702, 505))
-        font = QtGui.QFont()
-        font.setFamily("Fira Code Medium")
-        font.setPointSize(10)
-        Dialog.setFont(font)
         Dialog.setModal(True)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(200, 10, 481, 121))
+        self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label.setObjectName("label")
         self.licenseText = QtWidgets.QTextBrowser(Dialog)
         self.licenseText.setGeometry(QtCore.QRect(20, 130, 661, 311))
@@ -40,7 +37,7 @@ class Ui_Dialog(object):
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(20, 30, 181, 71))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap(":/loginHeader/logo_license_back_small.png"))
+        self.label_2.setPixmap(QtGui.QPixmap(":/logoHeaders/image_assets/logo_license_back_small.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
 
@@ -61,8 +58,8 @@ class Ui_Dialog(object):
         self.licenseText.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Fira Code Medium\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.1pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Fira Code Medium\'; font-size:10pt;\"><br /></p></body></html>"))
         self.visitWebsiteButton.setText(_translate("Dialog", "Visit website"))
         self.viewLicenseOnlineButton.setText(_translate("Dialog", "View License Online"))
 

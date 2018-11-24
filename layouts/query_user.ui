@@ -10,6 +10,12 @@
     <height>330</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
     <width>800</width>
@@ -21,11 +27,6 @@
     <width>800</width>
     <height>330</height>
    </size>
-  </property>
-  <property name="font">
-   <font>
-    <family>Fira Code Medium</family>
-   </font>
   </property>
   <property name="windowTitle">
    <string>User Query</string>
@@ -52,12 +53,11 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
-    <property name="font">
-     <font>
-      <family>Fira Code Medium</family>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
+    <row>
+     <property name="text">
+      <string>dn=test,cn=test</string>
+     </property>
+    </row>
     <column>
      <property name="text">
       <string>First Name</string>
@@ -83,6 +83,31 @@
       <string>Status</string>
      </property>
     </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>rete</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>ertre</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>terter</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>ert</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>tertretre</string>
+     </property>
+    </item>
    </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
