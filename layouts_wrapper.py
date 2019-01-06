@@ -1,23 +1,22 @@
 # import sys
-from colorama import Fore, Back, Style
+import datetime
 import webbrowser
 
 import requests
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox, QDialogButtonBox
+from ansi2html import Ansi2HTMLConverter
+from colorama import Back, Fore, Style
+from PyQt5 import QtCore, QtWidgets
+# from PyQt5.QtWidgets import QDialogButtonBox, QMessageBox
 
 import layouts.change_password
 import layouts.license
 import layouts.login_box
 import layouts.query_user
+import layouts.query_user_simple
 import layouts.user_lookup
 import layouts_helper
-import layouts.query_user_simple
 import login_actions
-import datetime
 
-from ansi2html import Ansi2HTMLConverter
-from colorama import Back, Fore, Style
 # from colorama import init as coloramaInit
 
 processes = set([])
@@ -52,6 +51,9 @@ class LoginWindow(QtWidgets.QDialog, layouts.login_box.Ui_Dialog):
     def login(self):
         # login_actions.bind_user(
         #     self.username_field.text(), self.password_field.text())
+        self.login_button.setDisabled(True)
+        self.cancel_button.setDisabled(True)
+        self.options_button.setDisabled(True)
         success = True
         try:
             ldap_user = login_actions.bind_user(
@@ -63,6 +65,9 @@ class LoginWindow(QtWidgets.QDialog, layouts.login_box.Ui_Dialog):
             extended_text = f"The phone number: {e.phone_number} was not found."
             layouts_helper.show_dialog_detailed_text(
                 self, "Error", f"Error: {e.message}", "", extended_text)
+            self.login_button.setEnabled(True)
+            self.cancel_button.setEnabled(True)
+            self.options_button.setEnabled(True)
             success = False
         except login_actions.LoginErrorException as e:
             print("LoginErrorException")
@@ -71,6 +76,9 @@ class LoginWindow(QtWidgets.QDialog, layouts.login_box.Ui_Dialog):
             extended_text = f"Error Code: {e.errors['result']}\nDescription: {e.errors['description']}"
             layouts_helper.show_dialog_detailed_text(
                 self, "Error", f"Error: {e.message}", "", extended_text)
+            self.login_button.setEnabled(True)
+            self.cancel_button.setEnabled(True)
+            self.options_button.setEnabled(True)
             success = False
         if success:
             print("Showing query form")
@@ -174,17 +182,22 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
 
     def logout_timer_timeout(self):
         self.time_until_logout_int -= 1
+        self.time_check()
+        self.update_time_left()
+        
+
+    def time_check(self):
         extend_session_flag = False
         if self.time_until_logout_int == 0:
             logout_action = layouts_helper.show_dialog_detailed_text(
-                self,"Expired Session", "Expired Session.", "You must login again if you need to extend your session.", "Your session has expired. Press any button to logout.", icon=QtWidgets.QMessageBox.Information)
+                self, "Expired Session", "Expired Session.", "You must login again if you need to extend your session.", "Your session has expired. Press any button to logout.", icon=QtWidgets.QMessageBox.Information)
             if logout_action == QtWidgets.QMessageBox.Ok:
                 self.timer_logout.stop()
                 self.logout()
             else:
                 self.timer_logout.stop()
                 self.logout()
-        elif self.time_until_logout_int == 900: # 900
+        elif self.time_until_logout_int == 3500:  # 900
             if not(extend_session_flag):
                 extend_session_action = layouts_helper.show_dialog_non_informative_text(
                     self, "Session Information", "Your session is about to expire.", "Do you want to extend your session by 15 minutes?", buttons=QtWidgets.QMessageBox.Yes |
@@ -194,8 +207,7 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
                 else:
                     pass
                 extend_session_flag = True
-
-        self.update_time_left()
+        # self.update_time_left()
 
     def update_time_left(self):
         self.time_in_session.setText(
