@@ -8,22 +8,39 @@
 # layouts\license.py: 9
 # layouts\login_box.py: 9
 # layouts\query_user.py: 9
+# layouts\query_user_simple.py: 9
 # layouts\user_lookup.py: 9
 # layouts_helper.py: 2
-# layouts_wrapper.py: 6
+# layouts_wrapper.py: 8
 # main.py: 4,5
 # main_images_rc.py: 9
+# setup_forms.py: 4,5
+# simple_user_query.py: 5,6
 PyQt5 == 5.11.3
+
+# layouts_wrapper.py: 6
+ansi2html == 1.5.2
 
 # read_common_config.py: 2
 appdirs == 1.4.3
 
+# layouts_wrapper.py: 7
+# ldap_connection.py: 2
+# login_actions.py: 4
+# simple_user_query.py: 13
+colorama == 0.3.9
+
 # configuration_wizard.py: 15
+# secrets.py: 3
 keyring == 12.2.1
 
+# secrets.py: 4
+keyrings.alt == 3.1
+
 # bind_properties.py: 1
+# ldap_connection.py: 1
 ldap3 == 2.5.1
 
 # configuration_wizard.py: 9
-# layouts_wrapper.py: 4
-requests == 2.18.4
+# layouts_wrapper.py: 5
+requests == 2.20.1
