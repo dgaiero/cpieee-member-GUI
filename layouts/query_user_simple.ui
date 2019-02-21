@@ -56,11 +56,17 @@
        <x>100</x>
        <y>240</y>
        <width>91</width>
-       <height>20</height>
+       <height>23</height>
       </rect>
      </property>
      <property name="text">
       <string>Query</string>
+     </property>
+     <property name="autoDefault">
+      <bool>true</bool>
+     </property>
+     <property name="default">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -85,7 +91,7 @@ any parameter</string>
        <x>10</x>
        <y>240</y>
        <width>81</width>
-       <height>19</height>
+       <height>23</height>
       </rect>
      </property>
      <property name="text">
@@ -98,7 +104,7 @@ any parameter</string>
        <x>10</x>
        <y>76</y>
        <width>181</width>
-       <height>157</height>
+       <height>160</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
@@ -132,26 +138,6 @@ any parameter</string>
       <item row="5" column="0" colspan="2">
        <widget class="QLineEdit" name="email_field"/>
       </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Member Since</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0" colspan="2">
-       <widget class="QDateEdit" name="member_since_field">
-        <property name="showGroupSeparator" stdset="0">
-         <bool>true</bool>
-        </property>
-        <property name="displayFormat">
-         <string>MM/dd/yyyy</string>
-        </property>
-        <property name="calendarPopup">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </widget>
@@ -172,7 +158,7 @@ any parameter</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuOptions">
@@ -212,9 +198,9 @@ any parameter</string>
   <tabstop>first_name_field</tabstop>
   <tabstop>last_name_field</tabstop>
   <tabstop>email_field</tabstop>
-  <tabstop>member_since_field</tabstop>
   <tabstop>export_query</tabstop>
   <tabstop>query_user</tabstop>
+  <tabstop>data_view</tabstop>
  </tabstops>
  <resources/>
  <connections/>

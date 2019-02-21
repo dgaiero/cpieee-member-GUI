@@ -6,6 +6,7 @@ import requests
 from ansi2html import Ansi2HTMLConverter
 from colorama import Back, Fore, Style
 from PyQt5 import QtCore, QtWidgets
+import PyQt5.QtGui as QtGui
 # from PyQt5.QtWidgets import QDialogButtonBox, QMessageBox
 
 import layouts.change_password
@@ -130,10 +131,9 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         self.ldap = ldap_user
         self.actionExit.setShortcut("Ctrl+Q")
         self.actionExit.triggered.connect(self.close)
-        self.member_since_field.setDisabled(True)
+        # self.member_since_field.setDisabled(True)
         self.export_query.setDisabled(True)
         self.query_user.setEnabled(False)
-        self.query_user.setDefault(True)
         self.first_name_field.textChanged.connect(
             self.enable_query_button)
         self.last_name_field.textChanged.connect(
@@ -159,8 +159,16 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         self.query_user.clicked.connect(self.query)
         # self.timer_start_logout()
         # self.update_time_left()
-        self.timer_start_logout()
-        self.update_time_left()
+        self.first_name_field.installEventFilter(self)
+        self.last_name_field.installEventFilter(self)
+        self.email_field.installEventFilter(self)
+
+    def eventFilter(self, source, event):
+        if (event.type() == QtCore.QEvent.KeyPress):
+            key = event.key()
+            if (key == QtCore.Qt.Key_Return):
+                self.query()
+        return QtWidgets.QMainWindow.eventFilter(self, source, event)
 
     def closeEvent(self, event):
         layouts_helper.close_event(self, event)
@@ -236,7 +244,7 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         for search_parameter in search_parameters:
             inner_search_string += search_parameter
         search_string = (f"(&(ObjectClass=ieeeUser)(|{inner_search_string}))")
-        print(search_string)
+        print("Search Query: " + search_string)
 
         search_result = self.ldap.search(search_string)
         search_print = ""
@@ -263,7 +271,7 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
             search_print += "NO RESULT FOUND."
         
         # search_print_html = ascii
-        print("Search Print: " + search_print)
+        print("Query Result: \n" + search_print)
         conv = Ansi2HTMLConverter()
         ansi = search_print
         html = conv.convert(ansi)
