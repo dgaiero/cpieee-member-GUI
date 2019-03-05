@@ -17,11 +17,10 @@ import layouts.query_user_simple
 import layouts.user_lookup
 import layouts_helper
 import login_actions
-
 # from colorama import init as coloramaInit
 
 processes = set([])
-TIME_UNTIL_LOGOUT = 3600 # 3600
+TIME_UNTIL_LOGOUT = 30 # 3600
 
 
 class LoginWindow(QtWidgets.QDialog, layouts.login_box.Ui_Dialog):
@@ -205,9 +204,9 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
             else:
                 self.timer_logout.stop()
                 self.logout()
-        elif self.time_until_logout_int == 900:  # 900
+        elif self.time_until_logout_int == 25:  # 900
             if not(extend_session_flag):
-                extend_session_action = layouts_helper.show_dialog_non_informative_text(
+                extend_session_action = layouts_helper.show_dialog_non_informative_text_timed(
                     self, "Session Information", "Your session is about to expire.", "Do you want to extend your session by 15 minutes?", buttons=QtWidgets.QMessageBox.Yes |
                     QtWidgets.QMessageBox.No, icon=QtWidgets.QMessageBox.Information)
                 if extend_session_action == QtWidgets.QMessageBox.Yes:
