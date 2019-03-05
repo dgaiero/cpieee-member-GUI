@@ -147,7 +147,7 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         self.statusBar.addPermanentWidget(self.login_user_text, 1)
         self.time_in_session = QtWidgets.QLabel(self.layoutWidget)
         self.time_in_session.setObjectName("time_in_session")
-        self.time_in_session.setText("Time left in session: {time_in_session}")
+        self.time_in_session.setText("Time left in session: {Timer Disabled}")
         self.time_in_session.setAlignment(QtCore.Qt.AlignRight)
         self.statusBar.addPermanentWidget(self.time_in_session, 1)
         license_view_dialog = LicenseWindow()
@@ -167,6 +167,7 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         if (event.type() == QtCore.QEvent.KeyPress):
             key = event.key()
             if (key == QtCore.Qt.Key_Return):
+                source.selectAll()
                 self.query()
         return QtWidgets.QMainWindow.eventFilter(self, source, event)
 
