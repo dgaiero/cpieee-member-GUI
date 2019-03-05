@@ -147,7 +147,7 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         self.statusBar.addPermanentWidget(self.login_user_text, 1)
         self.time_in_session = QtWidgets.QLabel(self.layoutWidget)
         self.time_in_session.setObjectName("time_in_session")
-        self.time_in_session.setText("Time left in session: {Timer Disabled}")
+        self.time_in_session.setText("Time left in session: {time_in_session}")
         self.time_in_session.setAlignment(QtCore.Qt.AlignRight)
         self.statusBar.addPermanentWidget(self.time_in_session, 1)
         license_view_dialog = LicenseWindow()
@@ -157,8 +157,8 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         self.actionAbout.triggered.connect(license_view_dialog.show)
         self.actionLogout.triggered.connect(self.logout)
         self.query_user.clicked.connect(self.query)
-        # self.timer_start_logout()
-        # self.update_time_left()
+        self.timer_start_logout()
+        self.update_time_left()
         self.first_name_field.installEventFilter(self)
         self.last_name_field.installEventFilter(self)
         self.email_field.installEventFilter(self)
@@ -167,7 +167,6 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         if (event.type() == QtCore.QEvent.KeyPress):
             key = event.key()
             if (key == QtCore.Qt.Key_Return):
-                source.selectAll()
                 self.query()
         return QtWidgets.QMainWindow.eventFilter(self, source, event)
 
@@ -206,7 +205,7 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
             else:
                 self.timer_logout.stop()
                 self.logout()
-        elif self.time_until_logout_int == 3500:  # 900
+        elif self.time_until_logout_int == 900:  # 900
             if not(extend_session_flag):
                 extend_session_action = layouts_helper.show_dialog_non_informative_text(
                     self, "Session Information", "Your session is about to expire.", "Do you want to extend your session by 15 minutes?", buttons=QtWidgets.QMessageBox.Yes |
