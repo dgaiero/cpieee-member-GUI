@@ -157,8 +157,8 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
         self.actionAbout.triggered.connect(license_view_dialog.show)
         self.actionLogout.triggered.connect(self.logout)
         self.query_user.clicked.connect(self.query)
-        # self.timer_start_logout()
-        # self.update_time_left()
+        self.timer_start_logout()
+        self.update_time_left()
         self.first_name_field.installEventFilter(self)
         self.last_name_field.installEventFilter(self)
         self.email_field.installEventFilter(self)
@@ -205,9 +205,9 @@ class QueryUserSimple(QtWidgets.QMainWindow, layouts.query_user_simple.Ui_QueryU
             else:
                 self.timer_logout.stop()
                 self.logout()
-        elif self.time_until_logout_int == 3500:  # 900
+        elif self.time_until_logout_int == 900:  # 900
             if not(extend_session_flag):
-                extend_session_action = layouts_helper.show_dialog_non_informative_text(
+                extend_session_action = layouts_helper.show_dialog_non_informative_text_timed(
                     self, "Session Information", "Your session is about to expire.", "Do you want to extend your session by 15 minutes?", buttons=QtWidgets.QMessageBox.Yes |
                     QtWidgets.QMessageBox.No, icon=QtWidgets.QMessageBox.Information)
                 if extend_session_action == QtWidgets.QMessageBox.Yes:
